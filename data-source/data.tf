@@ -19,9 +19,9 @@ data "aws_ami" "joindevops" {
 }
 
 
-data "aws_instance" "Terraform"{
-    instance_id="i-07c4f1480e3e58f20"
-}
+# data "aws_instance" "Terraform"{
+#     instance_id="i-07c4f1480e3e58f20"
+# }
 
 output "ami_id"{
     value = data.aws_ami.joindevops.id
