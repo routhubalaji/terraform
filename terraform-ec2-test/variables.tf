@@ -12,7 +12,7 @@ variable "sg_ids" {
 
 variable "tags" {
   default = {
-    name = "Modules Demo"
+    Name = "Modules_Demo"
     Terraform = true
   }
 }

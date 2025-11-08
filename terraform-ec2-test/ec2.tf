@@ -24,3 +24,7 @@ output "pub_ip" {
 output "prv_ip" {
   value = module.catalogue.private_ip
 }
+
+output "instance_id" {
+ value = module.catalogue.instance 
+}
