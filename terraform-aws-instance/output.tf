@@ -7,3 +7,7 @@ output "private_ip" {
   value = aws_instance.This.private_ip
   description = "Private ip address"
 }
+
+output "instance" {
+ value = aws_instance.This.id 
+}
