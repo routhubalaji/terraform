@@ -1,5 +1,5 @@
 resource "aws_vpc" "main" {
- cidr_block = var.cidr
+ cidr_block = var.vpc_cidr
  enable_dns_hostnames = true
  
  tags = merge(
@@ -35,7 +35,7 @@ resource "aws_subnet" "public" {
     var.public_subnet_tags,
      {
         Name = "${local.common_name_suffix}-public-${local.az_names[count.index]}"  #roboshop-dev-public-us-east-1a/1b
-    }
+     }
  )
 }
 
@@ -153,7 +153,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 resource "aws_route" "private" {
   route_table_id         = aws_route_table.private.id
   destination_cidr_block = "0.0.0.0/0"  # Or a specific CIDR block like "10.0.1.0/24"
-  gateway_id             =  aws_nat_gateway.nat_gateway.id # Or other target types
+  nat_gateway_id             =  aws_nat_gateway.nat_gateway.id # Or other target types
 }
 
 
@@ -162,7 +162,7 @@ resource "aws_route" "private" {
 resource "aws_route" "database" {
   route_table_id         = aws_route_table.database.id
   destination_cidr_block = "0.0.0.0/0"  # Or a specific CIDR block like "10.0.1.0/24"
-  gateway_id             =  aws_nat_gateway.nat_gateway.id # Or other target types
+  nat_gateway_id             =  aws_nat_gateway.nat_gateway.id # Or other target types
 }
 
 resource "aws_route_table_association" "public" {

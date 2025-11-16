@@ -3,7 +3,7 @@ variable "project" {
   description = "project name"
 }
 
-variable "cidr" {
+variable "vpc_cidr" {
   default = ""
 }
 
@@ -74,3 +74,12 @@ variable "nat_gateway_tags" {
   type = map
   default = {}
 }
+
+variable "is_peering_required" {
+  type = bool
+  default = true
+  
+}
+
+
+
